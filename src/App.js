@@ -21,6 +21,13 @@ const App = () => {
       });
   };
 
+  const filterNames = (event) => {
+    const filteredData = store.filter((item) =>
+      item.name.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setUsers(filteredData);
+  };
+
   useEffect(() => {
     getUsers();
   }, []);
