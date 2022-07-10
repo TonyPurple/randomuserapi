@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Lists from "./components/Lists";
+import Lists from "./components/List";
 import SearchBar from "./components/SearchBar";
  
 const App = () => {
