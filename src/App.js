@@ -6,8 +6,19 @@ const App = () => {
   const [store, setStore] = useState([]);
 
   const getUsers = () => {
-    axios.get("https://randomuser.me/api/?results=10&inc=name,registered&nat=fr")
-    .then(response => console.log(response.data.results[0].name.first))
+    axios
+      .get("https://randomuser.me/api/?results=10&inc=name,registered&nat=fr")
+      .then((response) => {
+        const newData = response.data.results.map((result) => ({
+          name: `${result.name.first} ${result.name.last}`,
+          id: result.registered
+        }));
+        setUsers(newData);
+        setStore(newData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
