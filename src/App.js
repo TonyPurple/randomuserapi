@@ -13,7 +13,7 @@ const App = () => {
     axios.get("https://randomuser.me/api/?results=10&inc=name,registered&nat=fr")
       .then((response) => {
         const newData = response.data.results.map((result) => ({
-          name: `${result.name.first} ${result.name.first}`,
+          name: `${result.name.first} ${result.name.last}`,
           id: result.registered,
         }));
         setLoading(true);
