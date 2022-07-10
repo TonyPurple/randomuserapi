@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Lists from "./components/Lists";
+import SearchBar from "./components/SearchBar";
  
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -33,8 +35,10 @@ const App = () => {
   }, []);
  
   return (
-    <div>
-      
+    <div className="Card">
+        <div className="header">NAME LIST</div>
+        <SearchBar searchFunction={filterNames} />
+        <Lists usernames={users} />
     </div>
   );
 };
