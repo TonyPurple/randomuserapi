@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Lists from "./components/List";
-import SearchBar from "./components/SearchBar";
-import './App.css'
+import Lists from "./List";
+import SearchBar from "./SearchBar";
+import '../App.css'
  
 const App = () => {
   const [users, setUsers] = useState([]);
