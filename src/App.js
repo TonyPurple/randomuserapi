@@ -6,15 +6,16 @@ import SearchBar from "./components/SearchBar";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [store, setStore] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getUsers = () => {
-    axios
-      .get("https://randomuser.me/api/?results=10&inc=name,registered&nat=fr")
+    axios.get("https://randomuser.me/api/?results=10&inc=name,registered&nat=fr")
       .then((response) => {
         const newData = response.data.results.map((result) => ({
-          name: `${result.name.first} ${result.name.last}`,
-          id: result.registered
+          name: `${result.name.first} ${result.name.first}`,
+          id: result.registered,
         }));
+        setLoading(true);
         setUsers(newData);
         setStore(newData);
       })
@@ -35,11 +36,17 @@ const App = () => {
   }, []);
  
   return (
-    <div className="Card">
-        <div className="header">NAME LIST</div>
-        <SearchBar searchFunction={filterNames} />
-        <Lists usernames={users} />
-    </div>
+    <>
+      {loading ? (
+        <div className="Card">
+          <div className="header">NAME LIST</div>
+          <SearchBar searchFunction={filterNames} />
+          <Lists users={users} />
+        </div>
+      ) : (
+        <div className="loader"></div>
+      )}
+    </>
   );
 };
  
